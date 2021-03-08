@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from 'react'
+import { Component } from "react"
+import { Button , message } from 'antd'
+import 'antd/dist/antd.less'
+// 浏览器路由 路由实例  只匹配一个路由
+import {BrowserRouter,Route,Switch} from 'react-router-dom'
+import Login from './pages/login/login'
+import Admin from './pages/admin/admin'
+// 应用的根组件
+export default class App extends Component {
+  handleClick = ()=>{
+    message.success('success')
+  }
+  render(){
+      return (
+        <BrowserRouter>
+          <Switch>
+           <Route path='/login' component={Login}></Route>
+           <Route path='/admin' component={Admin}></Route>
+          </Switch>
+        </BrowserRouter> 
+      ) 
+  }
 }
 
-export default App;
