@@ -5,6 +5,23 @@ import "./login.less";
 import logo from "./images/logo1.png";
 // 登陆的路由组件
 export default class login extends Component {
+  // 获取form组件
+  formRef = React.createRef();
+  
+  handleSubmit = (event) => {
+    // 获取form组件实例
+    const form = this.formRef.current;
+    // 根据Form.Item中name名获取用户输入的数据
+    const values = form.getFieldsValue(['username','password'])
+    console.log(values)
+  };
+  componentDidMount() {
+    this.formRef.current.setFieldsValue({
+      username: 'admin',
+      password:'admin'
+    });
+  }
+
   render() {
     return (
       <div className="login">
@@ -15,13 +32,17 @@ export default class login extends Component {
         <section className="login-content">
           <h2>用户登录</h2>
           <Form
+            onFinish={this.handleSubmit}
+            ref={this.formRef}
             name="normal_login"
             className="login-form"
             initialValues={{ remember: true }}
           >
             <Form.Item
               name="username"
-              rules={[{ required: true, message: "请输入用户名!" }]}
+              rules={[{ required: true, message: "请输入用户名!" },
+              { min: 2, message: "用户名至少2位" },
+              { max: 8, message: "用户名最多8位!" }]}
             >
               <Input
                 prefix={<UserOutlined className="site-form-item-icon" />}
