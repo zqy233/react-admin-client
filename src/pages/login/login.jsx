@@ -16,23 +16,21 @@ export default class login extends Component {
     console.log(values)
   };
   validatePwd = (rule, value,callback) => {
-     
-     callback('密码长度不能小于4位')
-    // return new Promise(async (resolve, reject) => {
-    //   console.log(value);
-    //     if (!value) {
-    //         await reject('密码必须输入')
-    //     } else if (value.length < 4) {
-    //       console.log(callback('密码长度不能小于4位'));
-    //         await reject('密码长度不能小于4位')
-    //     } else if (value.length > 12) {
-    //         await reject('密码长度不能大于于12位')
-    //     } else if (!/^[a-zA-Z0-9_]+$/.test(value)) {
-    //         await reject('密码必须是英文、数字或下划线组成')
-    //     } else {
-    //         await resolve()
-    //     }
-    // })
+    return new Promise(async (resolve, reject) => {
+      console.log(value);
+        if (!value) {
+            await reject('密码必须输入')
+        } else if (value.length < 4) {
+          console.log(callback('密码长度不能小于4位'));
+            await reject('密码长度不能小于4位')
+        } else if (value.length > 12) {
+            await reject('密码长度不能大于于12位')
+        } else if (!/^[a-zA-Z0-9_]+$/.test(value)) {
+            await reject('密码必须是英文、数字或下划线组成')
+        } else {
+            await resolve()
+        }
+    })
 };
   componentDidMount() {
     this.formRef.current.setFieldsValue({
