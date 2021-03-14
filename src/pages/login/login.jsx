@@ -16,6 +16,7 @@ export default class login extends Component {
       console.log(res);
     }).catch(err=>{
       console.log(err);
+      111111111111
     })
     // const form = this.formRef.current;
     // const values = form.getFieldsValue(["username", "password"]);
