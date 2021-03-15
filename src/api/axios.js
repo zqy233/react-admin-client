@@ -5,7 +5,7 @@ export default function ajax(url,data={},type='GET'){
     if(type==='GET'){
         return axios.get(url,{
             params:{
-              ID:1234
+              ID:data
             }
         })
     }else{
